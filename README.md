@@ -9,7 +9,7 @@ new token with the permissions "read:org, repo"
 ## Standalone usage
 ```
 export GITHUB_TOKEN=<github-token>
-epxort GITHUB_NAME="users/fleaz"
+export GITHUB_NAME="users/fleaz"
 ./download.sh /path/to/backupfolder
 ```
 
