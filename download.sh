@@ -12,13 +12,13 @@ REPOS=$(curl -q -H "Authorization: token $GITHUB_TOKEN"  "https://api.github.com
 
 cd $BACKUP_DIR
 for REPO_URL in $REPOS; do
-    FOLDER=$(echo $REPO_URL | cut -d"/" -f5 |cut -d"." -f1)
+    FOLDER=$(echo $REPO_URL | cut -d"/" -f5)
     if [ -d "$FOLDER" ]; then
         echo "Updating '$FOLDER'"
-        (cd $FOLDER; git pull)
+        (cd $FOLDER; git fetch --all)
     else
         echo "Cloning '$FOLDER'"
-        git clone --quiet "https://$GITHUB_TOKEN@${REPO_URL:8}"
+        git clone --mirror "https://$GITHUB_TOKEN@${REPO_URL:8}"
     fi
 done
 
